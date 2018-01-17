@@ -1,0 +1,22 @@
+
+We need to check conditions:
+
+
+Decreasing: If by the 7th change of price we have NEVER increased, 
+we have the decreasing pattern.
+
+Random: If we have 1, 2 increases followed by a decrease, we have Random.
+
+Big Spike: If we have gotten 3 increases in a row, and the last part is massive, we know it's a big_spike
+
+Small Spike: If we have gotten 4 increases in a row, and the last part is massive, we know it's a small spike.
+
+VARIABLES:
+
+HasIncreased = 0, 1 (tells us if it is decreasing)
+IncreaseInRowCount = 0, 1, 2, 3, 4 (gives big_spike, gives small_spike)
+DecreaseAfterIncrease = 0, 1 if IncreaseInRowCount is below 3. (gives random)
+Current, Prev: Indexes to help us compare if we have increase or decrease.
+
+
+ 
