@@ -1,12 +1,3 @@
-
-
-
-/* 1. Present the program with a vizual graph of what the calender for a week looks like
- * 2. Let user input the prices, each one followed by comma and another day. Max 14.
- * 3. Present the new, filled in calender and ask if it is the right input.
- * 4. If yes to 3, then loop through it to decide what kind of Pattern it is,
- * 	also show what day the decision was made for what graph it was.  */
-
 /*Cases:
  * If increases: EXCLUDE DECREASING
  * If increase, at most 2, followed by decrease: IT IS RANDOM
@@ -25,9 +16,8 @@
 
 
 
-
-
-char *printout(int inpList[SIZE]){
+//gives a list, as well as the amount of slots used for input.
+char *printout(int inpList[SIZE], int usedSize){
 
 	//enum listing of all possible Stalkmarket weekly patterns, UNIDENTIFIED being for bug-testing.
 	//You know something is wrong if the returned pattern is said to be UNIDENTIFIED.	
@@ -47,7 +37,7 @@ char *printout(int inpList[SIZE]){
 	//that is currently a feature to be implemented, it is crucial to get the 
 	//analysis of a whole week to work perfectly first.
 	int i = 0;
-	while(i < SIZE){
+	while(i < usedSize){
 		i = i + 1;	
 		currentIndex = i;
 		prevIndex = i - 1;		
@@ -120,12 +110,13 @@ char *printout(int inpList[SIZE]){
 
 
 int main(void){
-	int inputPrices[SIZE] = {4, 3, 2, 5, 6, 23, 10, 7, 9, 5, 4, 2, 1, 1};
+	int inputPrices[SIZE]; // = {4, 3, 2, 5, 6, 23, 10, 7, 9, 5, 4, 2, 1, 1};
 	printf("Finish input by inputting '0'.\n");
 	int i = 0;
 	int inp = 0;
 
-	/*while(i < SIZE){	
+	while(i < SIZE){
+		printf("Price %d: ", i+1);	
 		scanf("%d", &inp);
 	
 		if (inp == 0){
@@ -133,16 +124,16 @@ int main(void){
 		}
 		inputPrices[i] = inp;
 		i = i + 1;
-	}*/
+	}
 
 	int j = 0;
-	while (j < SIZE){
+	while (j < i){
 		printf("%d ", inputPrices[j]);
 		j = j + 1;
 	}
 	
 
-	printf("\n%s\n", printout(inputPrices));	
+	printf("\n%s\n", printout(inputPrices, i));	
 
 
 }
